@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Student Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --purple: #8054c7;
+    --dark: #4b287f;
+    --pink: #e9b8ed;
+    --lavender: #f0e7ff;
+    --white: #ffffff;
+    --text: #413451;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text);
+    background: linear-gradient(135deg, #f9f3ff, #eee5ff, #fff4fb);
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 780px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+/* HEADER PROFIL */
+.hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 40px 25px;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(135deg, #6540a5, #9867d9, #d4a5e8);
+    box-shadow: 0 15px 35px #8054c735;
+}
+
+.hero::before,
+.hero::after {
+    content: "✦";
+    position: absolute;
+    font-size: 80px;
+    color: #ffffff20;
+}
+
+.hero::before {
+    top: -15px;
+    left: 20px;
+}
+
+.hero::after {
+    bottom: -30px;
+    right: 25px;
+}
+
+.photo-frame {
+    width: 160px;
+    height: 160px;
+    padding: 6px;
+    margin: 0 auto 18px;
+    background: linear-gradient(135deg, white, #f1c8ff);
+    border-radius: 50%;
+    box-shadow: 0 8px 25px #39205c50;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+}
+
+.hello {
+    display: inline-block;
+    background: #ffffff25;
+    padding: 5px 17px;
+    border-radius: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(28px, 6vw, 38px);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.hero h1 span {
+    color: #ffe1ff;
+}
+
+.hero .subtitle {
+    margin-top: 8px;
+    color: #f7edff;
+    font-size: 15px;
+}
+
+.hero .status {
+    display: inline-block;
+    margin-top: 18px;
+    background: #ffffffed;
+    color: #7044ad;
+    padding: 8px 17px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* NAVIGASI */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 9px;
+    margin: 20px 0;
+}
+
+nav a {
+    text-decoration: none;
+    background: white;
+    color: var(--dark);
+    padding: 9px 14px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px #8054c710;
+    transition: .3s;
+}
+
+nav a:hover {
+    background: var(--purple);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* KARTU BAGIAN */
+section {
+    background: #ffffffeb;
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 22px;
+    border: 1px solid #eadcfb;
+    box-shadow: 0 7px 22px #8054c710;
+    scroll-margin-top: 20px;
+    transition: .3s;
+}
+
+section:hover {
+    box-shadow: 0 10px 28px #8054c71c;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #8054c7, #b48ae8);
+    color: white;
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 19px;
+    color: var(--dark);
+    line-height: 1.4;
+}
+
+.section-heading p {
+    color: #a08bb8;
+    font-size: 11px;
+}
+
+.description {
+    background: linear-gradient(135deg, #f7f0ff, #fff4fb);
+    border-radius: 15px;
+    padding: 18px;
+    font-size: 14px;
+}
+
+/* DATA MAHASISWA */
+.info {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    padding: 13px;
+    margin: 10px 0;
+    background: #faf7ff;
+    border: 1px solid #f0e7fb;
+    border-radius: 13px;
+}
+
+.info-icon {
+    min-width: 37px;
+    height: 37px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #eee3ff;
+    font-size: 17px;
+}
+
+.info small {
+    display: block;
+    color: #947da9;
+    font-size: 11px;
+}
+
+.info strong {
+    display: block;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* MATA KULIAH */
+.subjects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.subject {
+    padding: 15px;
+    background: linear-gradient(135deg, #f3eaff, #fff4fc);
+    border-radius: 14px;
+    border: 1px solid #e9dafa;
+    transition: .3s;
+}
+
+.subject:hover {
+    transform: translateY(-4px);
+    border-color: #ba98e9;
+}
+
+.subject .number {
+    color: #a27bce;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.subject h3 {
+    color: #553580;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* RIWAYAT PENDIDIKAN */
+.timeline {
+    border-left: 3px solid #c5a4ee;
+    margin-left: 8px;
+    padding-left: 22px;
+}
+
+.school {
+    position: relative;
+    margin: 0 0 25px;
+}
+
+.school:last-child {
+    margin-bottom: 0;
+}
+
+.school::before {
+    content: "";
+    position: absolute;
+    left: -31px;
+    top: 8px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #9867d9;
+    border: 3px solid #eadcff;
+}
+
+.school h3 {
+    color: #553580;
+    font-size: 14px;
+}
+
+.school p {
+    color: #81718e;
+    font-size: 12px;
+}
+
+.year {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #eee3ff;
+    color: #7044ad;
+    font-size: 11px;
+}
+
+/* KEAHLIAN */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills span {
+    background: #f0e7ff;
+    color: #6941a5;
+    padding: 8px 13px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #e4d3fa;
+}
+
+/* CITA-CITA */
+.quote {
+    margin-top: 22px;
+    padding: 28px 22px;
+    border-radius: 22px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #7044ad, #a779dc, #d6a4e6);
+    box-shadow: 0 10px 25px #8054c725;
+}
+
+.quote .heart {
+    font-size: 27px;
+}
+
+.quote p {
+    font-size: 17px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.quote small {
+    display: block;
+    margin-top: 10px;
+    color: #f7eaff;
+    font-size: 11px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px 10px;
+    color: #8b75a5;
+    font-size: 12px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 520px) {
+    .container {
+        margin: 10px auto;
+        padding: 13px;
+    }
+
+    .hero {
+        padding: 30px 15px;
+        border-radius: 23px;
+    }
+
+    .photo-frame {
+        width: 135px;
+        height: 135px;
+    }
+
+    section {
+        padding: 19px;
+        border-radius: 18px;
+    }
+
+    .subjects {
+        grid-template-columns: 1fr;
+    }
+
+    nav a {
+        padding: 8px 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- PROFIL -->
+    <header class="hero" id="beranda">
+        <div class="photo-frame">
+            <!-- Simpan foto kamu dengan nama foto.jpg -->
+            <img src="WhatsApp Image 2026-10-23 at 17.50.56 (1).jpeg" alt="Foto Profil Mahasiswa" class="photo">
+        </div>
+
+        <div class="hello">✦ MY PERSONAL PORTFOLIO ✦</div>
+
+        <h1>Nheno<span>Arenta</span></h1>
+
+        <p class="subtitle">
+            Mahasiswa 
+        </p>
+
+        <div class="status">🎓 Mahasiswa Aktif</div>
+    </header>
+
+    <!-- MENU -->
+    <nav>
+        <a href="#tentang">Tentang Saya</a>
+        <a href="#informasi">Informasi</a>
+        <a href="#matkul">Mata Kuliah</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#keahlian">Keahlian</a>
+    </nav>
+
+    <!-- TENTANG SAYA -->
+    <section id="tentang">
+        <div class="section-heading">
+            <div class="icon">💜</div>
+            <div>
+                <h2>Tentang Saya</h2>
+                <p>Kenali saya lebih dekat</p>
+            </div>
+        </div>
+
+        <div class="description">
+    Halo! Perkenalkan, saya Neno Arenta, seorang mahasiswa Teknik Informatika yang memiliki semangat tinggi untuk belajar dan mengembangkan diri. Saya tertarik pada dunia teknologi, khususnya pengembangan website, desain UI/UX, dan sistem informasi. Saya merupakan pribadi yang bertanggung jawab, disiplin, kreatif, serta senang mempelajari hal-hal baru. Bagi saya, setiap pengalaman adalah kesempatan untuk berkembang, meningkatkan kemampuan, dan menciptakan sesuatu yang bermanfaat bagi orang lain. Saya percaya bahwa kerja keras, konsistensi, dan kemauan untuk terus belajar merupakan kunci untuk meraih masa depan yang lebih baik.
+        </div>
+    </section>
+
+    <!-- INFORMASI MAHASISWA -->
+    <section id="informasi">
+        <div class="section-heading">
+            <div class="icon">👤</div>
+            <div>
+                <h2>Informasi Mahasiswa</h2>
+                <p>Data diri dan akademik</p>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info-icon">🪪</div>
+            <div>
+                <small>Nama Lengkap</small>
+                <strong>Nheno Arenta</strong>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info-icon">🔖</div>
+            <div>
+                <small>Nomor Induk Mahasiswa</small>
+                <strong>2404411412</strong>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info-icon">🎓</div>
+            <div>
+                <small>Program Studi</small>
+                <strong>Informatika</strong>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info-icon">🏛️</div>
+            <div>
+                <small>Universitas</small>
+                <strong>Universitas Cokroaminoto Palopo</strong>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info-icon">📚</div>
+            <div>
+                <small>Semester</small>
+                <strong>Semester 5</strong>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="info-icon">📍</div>
+            <div>
+                <small>Domisili</small>
+                <strong>Masamba kab.Luwu Utara</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATA KULIAH -->
+    <section id="matkul">
+        <div class="section-heading">
+            <div class="icon">📖</div>
+            <div>
+                <h2>Mata Kuliah</h2>
+                <p>Mata kuliah yang dipelajari</p>
+            </div>
+        </div>
+
+        <div class="subjects">
+            <div class="subject">
+                <span class="number">01 / AKADEMIK</span>
+                <h3>Pemrograman Web</h3>
+            </div>
+
+            <div class="subject">
+                <span class="number">02 / AKADEMIK</span>
+                <h3>Basis Data</h3>
+            </div>
+
+            <div class="subject">
+                <span class="number">03 / AKADEMIK</span>
+                <h3>Rekayasa Perangkat Lunak</h3>
+            </div>
+
+            <div class="subject">
+                <span class="number">04 / AKADEMIK</span>
+                <h3>Kecerdasan Buatan</h3>
+            </div>
+
+            <div class="subject">
+                <span class="number">05 / AKADEMIK</span>
+                <h3>Analisis Sistem</h3>
+            </div>
+
+            <div class="subject">
+                <span class="number">06 / AKADEMIK</span>
+                <h3>UI/UX Design</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- RIWAYAT PENDIDIKAN -->
+    <section id="pendidikan">
+        <div class="section-heading">
+            <div class="icon">🏫</div>
+            <div>
+                <h2>Riwayat Pendidikan</h2>
+                <p>Perjalanan pendidikan saya</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="school">
+                <h3>Universitas Nama Kampus</h3>
+                <p>UNIVERSITAS COKROAMINOTO PALOPO</p>
+                <span class="year">2024 – Sekarang</span>
+            </div>
+
+            <div class="school">
+                <h3>SMA / SMK Nama Sekolah</h3>
+                <p>SMKN 7 LUWU UTARA</p>
+                <span class="year">2019 – 2022</span>
+            </div>
+
+            <div class="school">
+                <h3>SMP Nama Sekolah</h3>
+                <p>SMP 01 DESA DANDANG</p>
+                <span class="year">2016 – 2019</span>
+            </div>
+
+            <div class="school">
+                <h3>SD Nama Sekolah</h3>
+                <p>SD OO8 DANDANG</p>
+                <span class="year">2010 – 2016</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEAHLIAN -->
+    <section id="keahlian">
+        <div class="section-heading">
+            <div class="icon">✨</div>
+            <div>
+                <h2>Keahlian dan Minat</h2>
+                <p>Kemampuan yang terus dikembangkan</p>
+            </div>
+        </div>
+
+        <div class="skills">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Microsoft Office</span>
+            <span>Desain UI/UX</span>
+            <span>Kerja Sama Tim</span>
+            <span>Komunikasi</span>
+        </div>
+    </section>
+
+    <!-- MOTIVASI -->
+    <div class="quote">
+        <div class="heart">♡</div>
+        <p>
+            “Terus belajar, terus bertumbuh,
+            dan jadilah versi terbaik dari dirimu.”
+        </p>
+        <small>YOUR FUTURE STARTS TODAY ✨</small>
+    </div>
+
+    <footer>
+        Dibuat dengan 💜 oleh NHENO ARENTA<br>
+        © 2026 · My Student Portfolio
+    </footer>
+
+</div>
+
+</body>
+</html>
